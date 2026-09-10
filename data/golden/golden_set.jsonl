@@ -1,0 +1,1 @@
+{"id": "eval_0", "conversation_id": "119237", "customer_message": "@AppleSupport My iPhone 8 battery is draining fast.", "conversation_context": [], "intent": "battery_power_issue", "expected_reply_characteristics": ["DRAFT: Needs Human Review"], "should_escalate": false, "escalation_reason": "DRAFT: Needs Human Review", "source": "heuristic_draft_pending_human_review"}

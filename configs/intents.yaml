@@ -78,7 +78,7 @@ intents:
 
   - name: feature_how_to
     definition: The customer is asking for instructions on how to use a feature, change a setting, or perform a standard action like a backup.
-    include: "How do I...", setting locations, backup instructions, UI questions.
+    include: '"How do I...", setting locations, backup instructions, UI questions.'
     exclude: Software glitches (the feature is broken) or account lockouts.
     examples:
       - "@AppleSupport how do I take a screenshot on the new iPad?"
