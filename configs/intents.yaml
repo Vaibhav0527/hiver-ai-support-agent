@@ -1,0 +1,99 @@
+intents:
+  - name: battery_power_issue
+    definition: The customer's device is experiencing rapid battery drain, failing to charge, shutting down unexpectedly, or not turning on.
+    include: Battery drain, charging problems, unexpected shutdowns, device won't boot.
+    exclude: Software bugs unrelated to power/battery.
+    examples:
+      - "@AppleSupport My iPhone 8 battery is draining fast after the update."
+      - "@AppleSupport my phone dies at 20% and won't turn back on."
+      - "Why is my iPad not charging when plugged in?"
+    neighbors: ["software_bug_glitch", "physical_hardware_damage"]
+    resolution_type: "troubleshooting_or_repair"
+
+  - name: software_bug_glitch
+    definition: A software-related malfunction such as an app crashing, iOS/macOS update failures, UI freezes, or connectivity (WiFi/Bluetooth) drops.
+    include: App crashes, update errors, freezing, WiFi/Bluetooth issues.
+    exclude: Battery drain issues, account access problems.
+    examples:
+      - "@AppleSupport the new iOS update keeps failing to install."
+      - "My Bluetooth keeps disconnecting on my AirPods."
+      - "Safari freezes every time I try to open a new tab."
+    neighbors: ["battery_power_issue", "feature_how_to"]
+    resolution_type: "troubleshooting"
+
+  - name: physical_hardware_damage
+    definition: Physical damage to the device requiring physical repair, such as a cracked screen, water damage, or physically broken buttons/ports.
+    include: Shattered screens, water damage, broken camera lens, bent chassis.
+    exclude: Internal hardware failures without physical damage (e.g., battery failure).
+    examples:
+      - "@AppleSupport I dropped my phone and the screen is cracked, how much to fix?"
+      - "Water spilled on my MacBook and the keyboard isn't working."
+      - "The home button is completely stuck."
+    neighbors: ["battery_power_issue"]
+    resolution_type: "store_appointment"
+
+  - name: account_id_access
+    definition: Issues logging into an Apple ID, activation lock, forgotten passwords, or two-factor authentication issues.
+    include: Password resets, locked accounts, iCloud login issues, Activation Lock.
+    exclude: Billing or subscription issues inside the account.
+    examples:
+      - "@AppleSupport I forgot my Apple ID password and can't log in."
+      - "My account has been locked for security reasons, please help."
+      - "How do I bypass activation lock on a used phone?"
+    neighbors: ["billing_subscription"]
+    resolution_type: "account_recovery_guide"
+
+  - name: billing_subscription
+    definition: Inquiries regarding iTunes/App Store purchases, unrecognized charges, iCloud storage upgrades, or Apple Music subscriptions.
+    include: Unrecognized charges, refund requests, subscription cancellations, billing errors.
+    exclude: Purchasing physical devices from the Apple Store.
+    examples:
+      - "@AppleSupport I got charged $9.99 and I don't know what it's for."
+      - "How do I cancel my Apple Music subscription?"
+      - "I need a refund for an app my child bought accidentally."
+    neighbors: ["account_id_access", "purchase_shipping_inquiry"]
+    resolution_type: "support_article_or_escalation"
+
+  - name: device_lost_stolen
+    definition: The customer has lost their device or it was stolen, and they are seeking help with Find My iPhone or locking the device.
+    include: Lost devices, stolen devices, Find My network tracking.
+    exclude: Physical damage to a device they possess.
+    examples:
+      - "@AppleSupport my iPhone was stolen, how do I lock it remotely?"
+      - "I lost my AirPods, can Find My track them if they are in the case?"
+      - "What do I do if someone stole my MacBook?"
+    neighbors: ["account_id_access"]
+    resolution_type: "find_my_guide"
+
+  - name: purchase_shipping_inquiry
+    definition: Questions regarding buying a physical product, tracking an order, trade-in values, or Apple Store appointments.
+    include: Shipping status, trade-in questions, stock availability, store hours.
+    exclude: iTunes/App store digital billing issues.
+    examples:
+      - "@AppleSupport when will my iPhone 15 ship? It says processing."
+      - "Do you take trade-ins for Apple Watch Series 3?"
+      - "Can I just walk into the Genius Bar or do I need an appointment?"
+    neighbors: ["billing_subscription"]
+    resolution_type: "informational"
+
+  - name: feature_how_to
+    definition: The customer is asking for instructions on how to use a feature, change a setting, or perform a standard action like a backup.
+    include: "How do I...", setting locations, backup instructions, UI questions.
+    exclude: Software glitches (the feature is broken) or account lockouts.
+    examples:
+      - "@AppleSupport how do I take a screenshot on the new iPad?"
+      - "Where did the dark mode setting move to in the new iOS?"
+      - "Can you tell me how to back up my phone to iCloud?"
+    neighbors: ["software_bug_glitch"]
+    resolution_type: "support_article"
+
+  - name: general_complaint
+    definition: Expressing frustration or anger at the brand without describing a specific, actionable technical issue.
+    include: Rants, negative feedback, general dissatisfaction.
+    exclude: Complaints that also contain a specific bug report or repair need.
+    examples:
+      - "@AppleSupport you guys are the worst, I'm switching to Android."
+      - "So tired of Apple products always slowing down."
+      - "Your customer service on the phone was terrible today."
+    neighbors: ["software_bug_glitch"]
+    resolution_type: "de_escalation_or_dm"

@@ -1,0 +1,22 @@
+brand_name: "AppleSupport"
+
+selection_reason: >
+  AppleSupport was chosen over AmazonHelp, SpotifyCares, and Uber_Support because it
+  offers the best balance of multi-turn conversational complexity and structured intent.
+  Unlike AmazonHelp or Uber_Support (which frequently default to one-turn "Please DM us" responses),
+  AppleSupport agents conduct grounded troubleshooting directly on Twitter (e.g., asking for iOS versions
+  or device models). This provides a superior testbed for an AI agent's ability to classify intents,
+  execute grounded replies, manage multi-turn context, and decide when escalation to a human/DM is actually necessary.
+
+data_filtering_rules:
+  # Filter only tweets where AppleSupport is the author or is mentioned
+  target_author: "AppleSupport"
+  
+  # Ensure we only pick multi-turn threads to test conversation memory
+  min_thread_length: 3
+  
+  # Ensure the thread begins with a customer query (inbound = True)
+  require_customer_initiation: true
+  
+  # Exclude overly short/noisy queries (e.g. just an emoji)
+  min_customer_message_length: 15
