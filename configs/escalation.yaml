@@ -1,0 +1,61 @@
+# Escalation Policy Configuration
+# All thresholds are documented in reports/escalation_policy.md
+
+thresholds:
+  # Minimum intent classifier confidence to auto-handle.
+  # Below this value the intent is considered unreliable.
+  min_intent_confidence: 0.60
+
+  # Minimum reply generator confidence to auto-handle.
+  # A low value means the model itself doubts its grounding.
+  min_reply_confidence: 0.55
+
+  # Minimum top-1 retrieval similarity to treat evidence as usable.
+  # Below this value we have no reliable historical precedent.
+  min_retrieval_similarity: 0.25
+
+  # Minimum number of retrieved examples required to auto-handle.
+  min_evidence_count: 1
+
+  # Maximum number of unsupported claims allowed in a generated reply.
+  # Any claims the model itself flags as ungrounded triggers escalation.
+  max_unsupported_claims: 0
+
+# Intents that ALWAYS require human escalation regardless of confidence.
+# Rationale: physical repair, account credential recovery, and financial
+# disputes carry real-world consequences that an AI cannot safely handle.
+always_escalate_intents:
+  - physical_hardware_damage   # requires Genius Bar visit
+  - general_complaint          # frustrated customer needs empathy, not automation
+
+# Intents that are CONDITIONAL on confidence and evidence quality.
+# These can be auto-handled if thresholds are met.
+conditional_intents:
+  - battery_power_issue
+  - software_bug_glitch
+  - account_id_access
+  - billing_subscription
+  - device_lost_stolen
+  - purchase_shipping_inquiry
+  - feature_how_to
+
+# The fallback intent label output by the classifier when it is uncertain.
+# Any message landing here is always escalated.
+uncertainty_intent: "needs_clarification"
+
+# Frustration keywords that indicate a high-risk, emotionally sensitive
+# interaction requiring a human touch.
+frustration_signals:
+  - "terrible"
+  - "worst"
+  - "useless"
+  - "incompetent"
+  - "ridiculous"
+  - "hate"
+  - "lawsuit"
+  - "attorney"
+  - "legal"
+  - "disgusting"
+  - "unacceptable"
+  - "fraud"
+  - "scam"
