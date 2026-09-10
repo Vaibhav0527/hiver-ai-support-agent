@@ -1,0 +1,7 @@
+tweet_id,author_id,inbound,created_at,text,response_tweet_id,in_response_to_tweet_id
+119237,105834,True,2017-10-31 22:10:47,@AppleSupport My iPhone 8 battery is draining fast.,119238,
+119238,AppleSupport,False,2017-10-31 22:12:47,@105834 We can help. Which iOS version are you on?,119239,119237
+119239,105834,True,2017-10-31 22:15:47,@AppleSupport I am on iOS 11.1,119240,119238
+119240,AppleSupport,False,2017-10-31 22:20:47,@105834 Thanks. Let us move to DM so we can check the battery health.,,119239
+119300,205834,True,2017-10-31 22:25:47,@AmazonHelp My package is missing!,119301,
+119301,AmazonHelp,False,2017-10-31 22:26:47,@205834 Sorry to hear that. Please DM us your tracking number.,,119300
