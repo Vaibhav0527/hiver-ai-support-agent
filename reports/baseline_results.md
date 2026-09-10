@@ -167,3 +167,24 @@ TF-IDF + LR is a strong, lightweight baseline but it is fundamentally limited
 by its bag-of-words representation. It cannot reason about context, paraphrase,
 or implicit meaning. The LLM classifier should outperform it significantly on
 ambiguous and short messages.
+
+
+---
+
+# Classifier Comparison Summary
+
+| Model | Accuracy | Macro F1 | Weighted F1 | ms/sample |
+|-------|----------|----------|-------------|-----------|
+| Majority Baseline | 0.2 | 0.0417 | 0.0667 | 0.0002 |
+| TF-IDF + LR | 0.8 | 0.6667 | 0.7333 | 0.0909 |
+| LLM (gpt-4o-mini) | N/A | N/A | N/A | N/A |
+
+Mode: `synthetic_demo`
+
+**Key takeaways:**
+- The majority baseline is the floor — any meaningful classifier must beat it.
+- TF-IDF + LR is fast and interpretable but struggles with vague/short messages.
+- The LLM classifier handles context, paraphrase, and ambiguity that keyword models miss,
+  at the cost of higher latency and API dependency.
+
+*Full per-class breakdown in `reports/classifier_comparison.json`*

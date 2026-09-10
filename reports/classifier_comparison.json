@@ -1,0 +1,23 @@
+{
+  "mode": "synthetic_demo",
+  "models": {
+    "majority_baseline": {
+      "accuracy": 0.2,
+      "macro_f1": 0.0417,
+      "weighted_f1": 0.0667,
+      "ms_per_sample": 0.0002
+    },
+    "tfidf_lr": {
+      "accuracy": 0.8,
+      "macro_f1": 0.6667,
+      "weighted_f1": 0.7333,
+      "ms_per_sample": 0.0909
+    },
+    "llm": {
+      "accuracy": "N/A",
+      "macro_f1": "N/A",
+      "weighted_f1": "N/A",
+      "ms_per_sample": "N/A"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+model:
+  provider: openai
+  name: gpt-4o-mini
+  temperature: 0.0        # deterministic — we want consistent classifications
+  max_tokens: 256         # intent classification response is short
+  request_timeout: 30     # seconds
+
+retry:
+  max_attempts: 3
+  backoff_seconds: 2      # linear backoff between retries
